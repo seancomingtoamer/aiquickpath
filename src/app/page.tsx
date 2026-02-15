@@ -31,7 +31,7 @@ export default function Home() {
 function Nav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-[72rem] mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Image src="/logo.png" alt="StationClaw" width={36} height={36} />
           <span className="text-lg font-bold tracking-tight text-gray-900">
@@ -60,7 +60,7 @@ function Nav() {
 function Hero() {
   return (
     <section className="pt-32 pb-20 px-6">
-      <div className="max-w-4xl mx-auto text-center">
+      <div className="max-w-[56rem] mx-auto text-center">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-medium text-gray-500 bg-gray-50 border border-gray-200 rounded-full">
           <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
@@ -81,7 +81,7 @@ function Hero() {
         </h1>
 
         {/* Subtext */}
-        <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p className="text-lg md:text-xl text-gray-500 max-w-[42rem] mx-auto mb-10 leading-relaxed">
           Your Claude Code runs in a terminal. Invisible. Alone.
           StationClaw gives it a 3D workspace, a persona, and a team.
           You bring the AI — we bring the station.
@@ -104,7 +104,7 @@ function Hero() {
         </div>
 
         {/* Hero screenshot */}
-        <div className="relative max-w-5xl mx-auto">
+        <div className="relative max-w-[64rem] mx-auto">
           <div className="rounded-xl overflow-hidden shadow-2xl shadow-gray-200/50 border border-gray-200">
             <Image
               src="/screenshot-station.png"
@@ -150,13 +150,13 @@ const DEMO_FEED = [
 function LiveDemo() {
   return (
     <section id="demo" className="py-20 px-6 bg-gray-50">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-[72rem] mx-auto">
         <div className="text-center mb-12">
           <p className="text-sm font-medium text-blue-600 mb-2 tracking-wide uppercase">Live Preview</p>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             This is what your station looks like
           </h2>
-          <p className="text-gray-500 max-w-xl mx-auto">
+          <p className="text-gray-500 max-w-[36rem] mx-auto">
             Agents move, tasks flow, and you see everything happening in real time.
             No dashboards. No spreadsheets. Just your team, working.
           </p>
@@ -443,7 +443,7 @@ function HowItWorks() {
 
   return (
     <section id="how-it-works" className="py-20 px-6">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-[56rem] mx-auto">
         <div className="text-center mb-16">
           <p className="text-sm font-medium text-blue-600 mb-2 tracking-wide uppercase">3 Steps</p>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
@@ -462,7 +462,7 @@ function HowItWorks() {
         </div>
 
         {/* MCP Config preview */}
-        <div className="mt-16 max-w-lg mx-auto">
+        <div className="mt-16 max-w-[32rem] mx-auto">
           <div className="rounded-lg overflow-hidden border border-gray-200 shadow-sm">
             <div className="bg-gray-50 px-4 py-2 border-b border-gray-200 flex items-center gap-2">
               <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
@@ -534,7 +534,7 @@ function Features() {
 
   return (
     <section className="py-20 px-6 bg-gray-50">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-[64rem] mx-auto">
         <div className="text-center mb-16">
           <p className="text-sm font-medium text-blue-600 mb-2 tracking-wide uppercase">Features</p>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
@@ -565,13 +565,13 @@ function Features() {
 function Screenshots() {
   return (
     <section className="py-20 px-6">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-[64rem] mx-auto">
         <div className="text-center mb-12">
           <p className="text-sm font-medium text-blue-600 mb-2 tracking-wide uppercase">The Station</p>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Not a dashboard. A world.
           </h2>
-          <p className="text-gray-500 max-w-xl mx-auto">
+          <p className="text-gray-500 max-w-[36rem] mx-auto">
             Your agents don&apos;t live in spreadsheet rows. They walk around a 3D space station, gesture at each other,
             and show you what they&apos;re doing. This is what AI collaboration looks like.
           </p>
@@ -646,7 +646,7 @@ function Pricing() {
 
   return (
     <section id="pricing" className="py-20 px-6 bg-gray-50">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-[64rem] mx-auto">
         <div className="text-center mb-16">
           <p className="text-sm font-medium text-blue-600 mb-2 tracking-wide uppercase">Pricing</p>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -713,12 +713,12 @@ function Pricing() {
 function FinalCTA() {
   return (
     <section className="py-20 px-6">
-      <div className="max-w-3xl mx-auto text-center">
+      <div className="max-w-[48rem] mx-auto text-center">
         <Image src="/logo.png" alt="StationClaw" width={56} height={56} className="mx-auto mb-6" />
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           Your agents are working blind.<br />Give them eyes.
         </h2>
-        <p className="text-gray-500 mb-8 max-w-lg mx-auto">
+        <p className="text-gray-500 mb-8 max-w-[32rem] mx-auto">
           StationClaw is free to start. Sign up, paste one config snippet,
           and watch your AI agents come alive in a 3D workspace.
         </p>
@@ -739,7 +739,7 @@ function FinalCTA() {
 function Footer() {
   return (
     <footer className="border-t border-gray-100 py-8 px-6">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="max-w-[72rem] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <Image src="/logo.png" alt="StationClaw" width={24} height={24} />
           <span className="text-sm font-medium text-gray-900">StationClaw</span>

@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
   try {
-    const { email, business } = await req.json()
+    const { email, company_name, team_size } = await req.json()
 
     if (!email) {
       return NextResponse.json({ error: 'Email required' }, { status: 400 })
@@ -16,7 +16,8 @@ export async function POST(req: Request) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email,
-          business: business || 'Not specified',
+          company_name: company_name || 'Not specified',
+          team_size: team_size || 'Not specified',
           source: 'aiquickpath.com',
           signup_date: new Date().toISOString(),
         }),
