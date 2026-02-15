@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cyan: #00f0ff;
-  --color-purple: #7b2fff;
-  --color-pink: #ff2f7b;
-  --color-green: #00ff88;
-  --color-dark: #000008;
-  --color-panel: #0a0a18;
-  --color-panel-border: #1a1a3a;
+  --color-navy: #1a365d;
+  --color-navy-light: #2a4a7f;
+  --color-navy-dark: #0f1f3d;
+  --color-slate: #334155;
+  --color-muted: #64748b;
+  --color-light: #f8fafc;
+  --color-border: #e2e8f0;
+  --color-accent: #2563eb;
+  --color-accent-light: #3b82f6;
+  --color-station-bg: #0a0a14;
 }
 
 * {
@@ -17,81 +20,96 @@
 }
 
 body {
-  background: var(--color-dark);
-  color: #e0e0f0;
+  background: #ffffff;
+  color: #1e293b;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: rgba(0, 240, 255, 0.3);
-  color: #fff;
+  background: rgba(26, 54, 93, 0.15);
+  color: #0f172a;
 }
 
-/* Glow utilities */
-.glow-cyan {
-  text-shadow: 0 0 10px rgba(0, 240, 255, 0.5), 0 0 40px rgba(0, 240, 255, 0.2);
-}
-
-.glow-purple {
-  text-shadow: 0 0 10px rgba(123, 47, 255, 0.5), 0 0 40px rgba(123, 47, 255, 0.2);
-}
-
-.glow-box-cyan {
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.15), inset 0 0 15px rgba(0, 240, 255, 0.05);
-}
-
-.glow-box-purple {
-  box-shadow: 0 0 15px rgba(123, 47, 255, 0.15), inset 0 0 15px rgba(123, 47, 255, 0.05);
-}
-
-/* Scan line animation */
-@keyframes scanline {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
-}
-
-.scanline::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(to right, transparent, rgba(0, 240, 255, 0.08), transparent);
-  animation: scanline 8s linear infinite;
-  pointer-events: none;
-  z-index: 9999;
-}
-
-/* Grid background */
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-/* Pulse animation */
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
-}
-
-.pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
-}
-
-/* Float animation */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-
-.float {
-  animation: float 4s ease-in-out infinite;
-}
-
-/* Smooth scroll */
 html {
   scroll-behavior: smooth;
+}
+
+/* Station demo animations */
+@keyframes agent-drift-1 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(12px, -8px); }
+  50% { transform: translate(-6px, -14px); }
+  75% { transform: translate(-10px, 4px); }
+}
+
+@keyframes agent-drift-2 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-10px, 6px); }
+  50% { transform: translate(8px, 12px); }
+  75% { transform: translate(14px, -6px); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+@keyframes hologram-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes task-slide {
+  0% { opacity: 0; transform: translateX(-8px); }
+  15% { opacity: 1; transform: translateX(0); }
+  85% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(8px); }
+}
+
+@keyframes feed-appear {
+  0% { opacity: 0; transform: translateY(6px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes scan-line {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes grid-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes typing {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+@keyframes cursor-blink {
+  0%, 100% { border-color: #00f0ff; }
+  50% { border-color: transparent; }
+}
+
+/* Smooth fade-in for sections */
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fade-up 0.6s ease-out forwards;
 }

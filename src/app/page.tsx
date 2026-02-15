@@ -1,38 +1,52 @@
 'use client'
 
-import { useState } from 'react'
+import Image from 'next/image'
+
+/* ─────────────────────────────────────────────
+   STATIONCLAW — MARKETING SITE
+   White bg, navy accents, clean Inter font.
+   Vibe Marketing: anti-AI-slop, direct response,
+   show don't tell (animated demo), real screenshots.
+   ───────────────────────────────────────────── */
 
 export default function Home() {
   return (
-    <main className="grid-bg min-h-screen">
+    <main className="min-h-screen bg-white">
       <Nav />
       <Hero />
-      <WhatYouGet />
+      <LiveDemo />
       <HowItWorks />
-      <TheStation />
+      <Features />
+      <Screenshots />
       <Pricing />
-      <CTA />
+      <FinalCTA />
       <Footer />
     </main>
   )
 }
 
-/* ─── NAV ─── */
+/* ═══════════════════════════════════════════════
+   NAV
+   ═══════════════════════════════════════════════ */
 function Nav() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50" style={{ background: 'linear-gradient(to bottom, rgba(0,0,8,0.95), rgba(0,0,8,0.8))' }}>
-      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-2 h-2 bg-cyan rounded-full" style={{ boxShadow: '0 0 8px #00f0ff' }} />
-          <span className="text-cyan font-bold tracking-[0.3em] text-sm" style={{ fontFamily: 'Orbitron, sans-serif' }}>
-            AIQUICKPATH
+          <Image src="/logo.png" alt="StationClaw" width={36} height={36} />
+          <span className="text-lg font-bold tracking-tight text-gray-900">
+            StationClaw
           </span>
         </div>
-        <div className="flex items-center gap-8" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-          <a href="#how-it-works" className="text-gray-400 hover:text-cyan transition-colors text-sm tracking-widest">PROCESS</a>
-          <a href="#pricing" className="text-gray-400 hover:text-cyan transition-colors text-sm tracking-widest">PRICING</a>
-          <a href="#start" className="px-4 py-2 border border-cyan/30 bg-cyan/10 text-cyan text-sm tracking-widest hover:bg-cyan/20 transition-all">
-            GET STARTED
+        <div className="hidden md:flex items-center gap-8 text-sm text-gray-500">
+          <a href="#demo" className="hover:text-gray-900 transition-colors">Demo</a>
+          <a href="#how-it-works" className="hover:text-gray-900 transition-colors">How it works</a>
+          <a href="#pricing" className="hover:text-gray-900 transition-colors">Pricing</a>
+          <a
+            href="/onboard"
+            className="px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-md hover:bg-gray-800 transition-colors"
+          >
+            Get Started
           </a>
         </div>
       </div>
@@ -40,196 +54,503 @@ function Nav() {
   )
 }
 
-/* ─── HERO ─── */
+/* ═══════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════ */
 function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple/5 rounded-full blur-[120px]" />
-      </div>
-
-      <div className="relative text-center max-w-4xl">
-        {/* Status line */}
-        <div className="flex items-center justify-center gap-2 mb-8">
-          <div className="w-1.5 h-1.5 bg-green rounded-full pulse-glow" />
-          <span className="text-green/80 text-xs tracking-[0.4em]" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-            ACCEPTING NEW CLIENTS
-          </span>
+    <section className="pt-32 pb-20 px-6">
+      <div className="max-w-4xl mx-auto text-center">
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-medium text-gray-500 bg-gray-50 border border-gray-200 rounded-full">
+          <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
+          Now in Beta
         </div>
 
-        <h1 className="glow-cyan mb-6" style={{ fontFamily: 'Orbitron, sans-serif', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, letterSpacing: '0.05em', color: '#00f0ff' }}>
-          YOUR AI AGENTS.<br />YOUR COMMAND STATION.
+        {/* Logo mark large */}
+        <div className="flex justify-center mb-8">
+          <Image src="/logo.png" alt="StationClaw" width={80} height={80} />
+        </div>
+
+        {/* Headline */}
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 leading-[1.1] mb-6">
+          Give your AI agents<br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800">
+            a body.
+          </span>
         </h1>
 
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-4 leading-relaxed" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-          We teach you <span className="text-white font-semibold">Claude Code</span> and agentic AI from scratch.
-          Then we build you a <span className="text-cyan">custom command station</span> where your AI agents
-          work for you 24/7.
+        {/* Subtext */}
+        <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed">
+          Your Claude Code runs in a terminal. Invisible. Alone.
+          StationClaw gives it a 3D workspace, a persona, and a team.
+          You bring the AI — we bring the station.
         </p>
 
-        <p className="text-gray-500 text-sm mb-10" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-          3 sessions. Full setup. Ongoing mentorship.
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#start" className="group relative px-8 py-4 bg-cyan/10 border border-cyan/40 text-cyan tracking-[0.2em] text-sm font-semibold hover:bg-cyan/20 transition-all" style={{ fontFamily: 'Orbitron, sans-serif' }}>
-            <span className="relative z-10">BOOK YOUR SEAT</span>
-            <div className="absolute inset-0 bg-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+          <a
+            href="/onboard"
+            className="px-8 py-3.5 bg-gray-900 text-white font-semibold rounded-md hover:bg-gray-800 transition-all text-sm tracking-wide"
+          >
+            Get Started Free
           </a>
-          <a href="#how-it-works" className="px-8 py-4 text-gray-400 tracking-[0.2em] text-sm hover:text-white transition-colors" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-            SEE THE PROCESS
+          <a
+            href="#demo"
+            className="px-8 py-3.5 text-gray-500 font-medium text-sm hover:text-gray-900 transition-colors"
+          >
+            Watch the demo &darr;
           </a>
         </div>
 
-        {/* Terminal line */}
-        <div className="mt-16 mx-auto max-w-lg bg-panel/80 border border-panel-border rounded-sm px-4 py-3 text-left">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-2 h-2 rounded-full bg-pink" />
-            <div className="w-2 h-2 rounded-full bg-yellow-500" />
-            <div className="w-2 h-2 rounded-full bg-green" />
+        {/* Hero screenshot */}
+        <div className="relative max-w-5xl mx-auto">
+          <div className="rounded-xl overflow-hidden shadow-2xl shadow-gray-200/50 border border-gray-200">
+            <Image
+              src="/screenshot-station.png"
+              alt="StationClaw — 3D agent workspace with two agents collaborating"
+              width={1440}
+              height={810}
+              className="w-full h-auto"
+              priority
+            />
           </div>
-          <p className="text-cyan/60 text-xs font-mono">
-            <span className="text-green">$</span> claude &quot;build me a lead capture system&quot;<br />
-            <span className="text-gray-500">{'>'} Creating n8n workflow... connecting Airtable...</span><br />
-            <span className="text-gray-500">{'>'} Telegram notifications configured.</span><br />
-            <span className="text-cyan">{'>'} Done. 3 new leads captured while you slept.</span>
+          {/* Floating labels */}
+          <div className="absolute top-4 left-4 md:top-6 md:left-6 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-md shadow-sm border border-gray-100 text-xs font-medium text-gray-700">
+            2 Agents Online
+          </div>
+          <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-md shadow-sm border border-gray-100 text-xs font-medium text-green-600">
+            Connected via MCP
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ═══════════════════════════════════════════════
+   LIVE DEMO — Animated fake station interface
+   Shows what it feels like to watch agents work.
+   ═══════════════════════════════════════════════ */
+
+const DEMO_TASKS = [
+  { title: 'Deploy landing page', status: 'DONE', agent: 'CTO', color: '#00f0ff' },
+  { title: 'Build MCP gateway', status: 'IN PROGRESS', agent: 'CTO', color: '#00f0ff' },
+  { title: 'Design onboarding flow', status: 'TODO', agent: 'Design Lead', color: '#7b2fff' },
+  { title: 'Write API documentation', status: 'TODO', agent: 'CTO', color: '#00f0ff' },
+  { title: 'Set up Stripe billing', status: 'TODO', agent: 'Design Lead', color: '#7b2fff' },
+]
+
+const DEMO_FEED = [
+  { agent: 'CTO Agent', msg: 'Completed: Deploy landing page', time: '2m ago', color: '#00f0ff' },
+  { agent: 'Design Lead', msg: 'Started: Design onboarding flow', time: '1m ago', color: '#7b2fff' },
+  { agent: 'CTO Agent', msg: 'Working on: Build MCP gateway', time: 'now', color: '#00f0ff' },
+]
+
+function LiveDemo() {
+  return (
+    <section id="demo" className="py-20 px-6 bg-gray-50">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <p className="text-sm font-medium text-blue-600 mb-2 tracking-wide uppercase">Live Preview</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            This is what your station looks like
+          </h2>
+          <p className="text-gray-500 max-w-xl mx-auto">
+            Agents move, tasks flow, and you see everything happening in real time.
+            No dashboards. No spreadsheets. Just your team, working.
           </p>
         </div>
-      </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 float">
-        <div className="w-px h-12 bg-gradient-to-b from-transparent via-cyan/30 to-transparent" />
-      </div>
-    </section>
-  )
-}
+        {/* The demo viewport */}
+        <div className="relative rounded-xl overflow-hidden shadow-2xl border border-gray-200 bg-[#0a0a14]"
+          style={{ aspectRatio: '16/9', maxWidth: 900, margin: '0 auto' }}
+        >
+          {/* Grid background */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(0,240,255,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,240,255,0.04) 1px, transparent 1px)
+              `,
+              backgroundSize: '40px 40px',
+              animation: 'grid-pulse 4s ease-in-out infinite',
+            }}
+          />
 
-/* ─── WHAT YOU GET ─── */
-function WhatYouGet() {
-  const features = [
-    {
-      icon: '//01',
-      title: 'CLAUDE CODE MASTERY',
-      desc: 'Learn to command Claude Code like a pro. Write prompts that build entire features. Understand agentic patterns that multiply your output.',
-      color: '#00f0ff',
-    },
-    {
-      icon: '//02',
-      title: 'YOUR OWN AGENT FLEET',
-      desc: 'We set up your personal AI agents — each with a name, a role, and a mission. CTO, Marketing Director, Field Ops — your call.',
-      color: '#7b2fff',
-    },
-    {
-      icon: '//03',
-      title: 'CUSTOM COMMAND STATION',
-      desc: 'A visual Junosphere station where you see your agents work. Real-time task boards, activity feeds, and holographic project maps.',
-      color: '#ff2f7b',
-    },
-    {
-      icon: '//04',
-      title: 'INFRASTRUCTURE & DEPLOY',
-      desc: 'We connect your stack: Vercel, Supabase, n8n workflows, Telegram bots, Airtable — all wired up and running before we leave.',
-      color: '#00ff88',
-    },
-  ]
+          {/* Scan line */}
+          <div
+            className="absolute left-0 right-0 h-[1px] pointer-events-none"
+            style={{
+              background: 'linear-gradient(to right, transparent, rgba(0,240,255,0.15), transparent)',
+              animation: 'scan-line 6s linear infinite',
+            }}
+          />
 
-  return (
-    <section className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <span className="text-cyan/50 text-xs tracking-[0.5em]" style={{ fontFamily: 'Orbitron, sans-serif' }}>WHAT YOU WALK AWAY WITH</span>
-          <h2 className="glow-cyan mt-3 text-3xl font-bold tracking-wide" style={{ fontFamily: 'Orbitron, sans-serif', color: '#00f0ff' }}>
-            THE FULL STACK
-          </h2>
-        </div>
+          {/* Station floor (gradient) */}
+          <div className="absolute bottom-0 left-0 right-0 h-[40%]"
+            style={{
+              background: 'linear-gradient(to top, rgba(0,240,255,0.06), transparent)',
+            }}
+          />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {features.map((f) => (
+          {/* Center hologram */}
+          <div className="absolute" style={{ top: '35%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+            {/* Rotating ring */}
             <div
-              key={f.title}
-              className="relative p-6 bg-panel/60 border border-panel-border hover:border-opacity-60 transition-all group"
-              style={{ borderColor: `${f.color}20` }}
-            >
-              {/* Corner accent */}
-              <div className="absolute top-0 left-0 w-8 h-px" style={{ background: f.color }} />
-              <div className="absolute top-0 left-0 w-px h-8" style={{ background: f.color }} />
-
-              <span className="text-xs tracking-[0.3em] font-bold mb-3 block" style={{ fontFamily: 'Orbitron, sans-serif', color: f.color }}>
-                {f.icon}
-              </span>
-              <h3 className="text-white text-lg font-bold tracking-wide mb-2" style={{ fontFamily: 'Orbitron, sans-serif', fontSize: 14 }}>
-                {f.title}
-              </h3>
-              <p className="text-gray-400 text-sm leading-relaxed" style={{ fontFamily: 'Rajdhani, sans-serif', fontSize: 15 }}>
-                {f.desc}
-              </p>
+              className="absolute"
+              style={{
+                width: 80, height: 80,
+                left: -40, top: -40,
+                border: '1px solid rgba(0,240,255,0.2)',
+                borderRadius: '50%',
+                animation: 'hologram-rotate 8s linear infinite',
+              }}
+            />
+            <div
+              className="absolute"
+              style={{
+                width: 60, height: 60,
+                left: -30, top: -30,
+                border: '1px solid rgba(0,240,255,0.35)',
+                borderRadius: '50%',
+                animation: 'hologram-rotate 5s linear infinite reverse',
+              }}
+            />
+            {/* Core */}
+            <div
+              style={{
+                width: 16, height: 16,
+                background: 'rgba(0,240,255,0.8)',
+                borderRadius: '50%',
+                boxShadow: '0 0 30px rgba(0,240,255,0.4), 0 0 60px rgba(0,240,255,0.2)',
+                transform: 'translate(-8px, -8px)',
+              }}
+            />
+            {/* Label */}
+            <div className="absolute whitespace-nowrap text-center" style={{ top: 50, left: '50%', transform: 'translateX(-50%)' }}>
+              <div style={{ fontSize: 10, color: '#00f0ff', letterSpacing: 3, fontWeight: 700 }}>STATIONCLAW</div>
+              <div style={{ fontSize: 7, color: '#406080', letterSpacing: 2, marginTop: 2 }}>AGENT COLLABORATION</div>
             </div>
-          ))}
+          </div>
+
+          {/* Agent 1 (Cyan) */}
+          <div
+            className="absolute"
+            style={{
+              top: '45%', left: '30%',
+              animation: 'agent-drift-1 12s ease-in-out infinite',
+            }}
+          >
+            <div style={{ position: 'relative' }}>
+              {/* Pulse ring */}
+              <div
+                className="absolute"
+                style={{
+                  width: 40, height: 40, left: -12, top: -4,
+                  border: '1px solid rgba(0,240,255,0.3)',
+                  borderRadius: '50%',
+                  animation: 'pulse-ring 3s ease-out infinite',
+                }}
+              />
+              {/* Agent dot */}
+              <div
+                style={{
+                  width: 16, height: 24,
+                  background: 'linear-gradient(to bottom, #00f0ff, #008899)',
+                  borderRadius: '8px 8px 4px 4px',
+                  boxShadow: '0 0 20px rgba(0,240,255,0.5)',
+                }}
+              />
+              {/* Name */}
+              <div className="absolute whitespace-nowrap" style={{ top: -18, left: '50%', transform: 'translateX(-50%)' }}>
+                <span style={{ fontSize: 8, color: '#00f0ff', letterSpacing: 2, fontWeight: 700 }}>CTO AGENT</span>
+              </div>
+              {/* Floor ring */}
+              <div className="absolute" style={{
+                width: 30, height: 6, left: -7, top: 26,
+                border: '1px solid rgba(0,240,255,0.25)',
+                borderRadius: '50%',
+              }} />
+            </div>
+          </div>
+
+          {/* Agent 2 (Purple) */}
+          <div
+            className="absolute"
+            style={{
+              top: '50%', left: '65%',
+              animation: 'agent-drift-2 14s ease-in-out infinite',
+            }}
+          >
+            <div style={{ position: 'relative' }}>
+              <div
+                className="absolute"
+                style={{
+                  width: 40, height: 40, left: -12, top: -4,
+                  border: '1px solid rgba(123,47,255,0.3)',
+                  borderRadius: '50%',
+                  animation: 'pulse-ring 3s ease-out infinite 1.5s',
+                }}
+              />
+              <div
+                style={{
+                  width: 16, height: 24,
+                  background: 'linear-gradient(to bottom, #7b2fff, #4a1a99)',
+                  borderRadius: '8px 8px 4px 4px',
+                  boxShadow: '0 0 20px rgba(123,47,255,0.5)',
+                }}
+              />
+              <div className="absolute whitespace-nowrap" style={{ top: -18, left: '50%', transform: 'translateX(-50%)' }}>
+                <span style={{ fontSize: 8, color: '#7b2fff', letterSpacing: 2, fontWeight: 700 }}>DESIGN LEAD</span>
+              </div>
+              <div className="absolute" style={{
+                width: 30, height: 6, left: -7, top: 26,
+                border: '1px solid rgba(123,47,255,0.25)',
+                borderRadius: '50%',
+              }} />
+            </div>
+          </div>
+
+          {/* HUD overlay — top bar */}
+          <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-4 py-2">
+            <div style={{ fontSize: 10, color: '#00f0ff', letterSpacing: 3, fontWeight: 700 }}>
+              STATIONCLAW
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-1.5">
+                <div className="w-1.5 h-1.5 rounded-full bg-green-400" style={{ animation: 'blink 2s infinite' }} />
+                <span style={{ fontSize: 9, color: '#608090', letterSpacing: 1 }}>2 AGENTS ONLINE</span>
+              </div>
+              <div style={{
+                fontSize: 9, color: '#00f0ff', letterSpacing: 1,
+                padding: '2px 8px',
+                border: '1px solid rgba(0,240,255,0.2)',
+                background: 'rgba(0,240,255,0.05)',
+              }}>
+                CTO AGENT
+              </div>
+            </div>
+          </div>
+
+          {/* Task board overlay — right side */}
+          <div
+            className="absolute top-10 right-3 w-[180px]"
+            style={{
+              background: 'rgba(0,0,20,0.7)',
+              border: '1px solid rgba(0,240,255,0.1)',
+              backdropFilter: 'blur(4px)',
+              padding: '8px',
+            }}
+          >
+            <div style={{ fontSize: 8, color: '#608090', letterSpacing: 2, marginBottom: 6 }}>TASK BOARD</div>
+            {DEMO_TASKS.map((t, i) => (
+              <div
+                key={i}
+                className="mb-1.5"
+                style={{
+                  padding: '4px 6px',
+                  background: t.status === 'IN PROGRESS' ? 'rgba(0,240,255,0.06)' : 'rgba(255,255,255,0.02)',
+                  border: `1px solid ${t.status === 'IN PROGRESS' ? 'rgba(0,240,255,0.15)' : 'rgba(255,255,255,0.05)'}`,
+                  animation: `task-slide ${4 + i * 0.5}s ease-in-out infinite ${i * 2}s`,
+                }}
+              >
+                <div style={{ fontSize: 8, color: '#c0d0e0', lineHeight: 1.3 }}>{t.title}</div>
+                <div className="flex items-center justify-between mt-1">
+                  <span style={{ fontSize: 7, color: t.color, letterSpacing: 1 }}>{t.agent.toUpperCase()}</span>
+                  <span style={{
+                    fontSize: 6, letterSpacing: 1, padding: '1px 4px',
+                    color: t.status === 'DONE' ? '#00ff88' : t.status === 'IN PROGRESS' ? '#ffaa00' : '#506070',
+                    border: `1px solid ${t.status === 'DONE' ? 'rgba(0,255,136,0.2)' : t.status === 'IN PROGRESS' ? 'rgba(255,170,0,0.2)' : 'rgba(80,96,112,0.2)'}`,
+                  }}>{t.status}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Activity feed — bottom left */}
+          <div
+            className="absolute bottom-3 left-3 w-[220px]"
+            style={{
+              background: 'rgba(0,0,20,0.7)',
+              border: '1px solid rgba(0,240,255,0.1)',
+              backdropFilter: 'blur(4px)',
+              padding: '8px',
+            }}
+          >
+            <div style={{ fontSize: 8, color: '#608090', letterSpacing: 2, marginBottom: 6 }}>ACTIVITY</div>
+            {DEMO_FEED.map((f, i) => (
+              <div
+                key={i}
+                className="mb-1.5"
+                style={{
+                  animation: `feed-appear ${6}s ease-in-out infinite ${i * 3}s`,
+                }}
+              >
+                <div className="flex items-center gap-1">
+                  <div className="w-1 h-1 rounded-full" style={{ background: f.color }} />
+                  <span style={{ fontSize: 7, color: f.color, letterSpacing: 1 }}>{f.agent.toUpperCase()}</span>
+                  <span style={{ fontSize: 7, color: '#405060', marginLeft: 'auto' }}>{f.time}</span>
+                </div>
+                <div style={{ fontSize: 8, color: '#8090a0', marginLeft: 8, marginTop: 1 }}>{f.msg}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom status bar */}
+          <div className="absolute bottom-0 left-0 right-0 h-5 flex items-center justify-between px-3"
+            style={{ background: 'rgba(0,0,20,0.5)', borderTop: '1px solid rgba(0,240,255,0.08)' }}
+          >
+            <span style={{ fontSize: 7, color: '#405060', letterSpacing: 1 }}>v0.1.0 // AGENT COLLABORATION PLATFORM</span>
+            <div className="flex items-center gap-1">
+              <span style={{ fontSize: 7, color: '#405060' }}>SUPABASE:</span>
+              <span style={{ fontSize: 7, color: '#00ff88', fontWeight: 700 }}>CONNECTED</span>
+            </div>
+          </div>
         </div>
+
+        {/* Caption under demo */}
+        <p className="text-center text-sm text-gray-400 mt-6">
+          Simulated station view — actual product uses full 3D with animated agent avatars
+        </p>
       </div>
     </section>
   )
 }
 
-/* ─── HOW IT WORKS ─── */
+/* ═══════════════════════════════════════════════
+   HOW IT WORKS
+   ═══════════════════════════════════════════════ */
 function HowItWorks() {
   const steps = [
     {
-      session: 'SESSION 01',
-      title: 'FOUNDATIONS',
-      desc: 'Claude Code from zero. We walk you through prompting, file editing, multi-step tasks, git flows. You build your first automated workflow live on the call.',
-      duration: '90 min Zoom',
+      num: '01',
+      title: 'Sign up & name your station',
+      desc: 'Create an account, name your workspace, and define your first agent persona in 60 seconds.',
     },
     {
-      session: 'SESSION 02',
-      title: 'AGENT ARCHITECTURE',
-      desc: 'Design your agent fleet. We set up your infrastructure: DigitalOcean droplets, Telegram bots, n8n automations, Airtable command center. Your agents come online.',
-      duration: '90 min Zoom',
+      num: '02',
+      title: 'Paste the MCP config into Claude Code',
+      desc: 'We give you a single JSON snippet. Paste it into your Claude Code config. That\'s the entire integration.',
     },
     {
-      session: 'SESSION 03',
-      title: 'STATION LAUNCH',
-      desc: 'We deploy your Junosphere command station. Connect all your agents. Run your first autonomous operation. You leave with a fully operational AI empire.',
-      duration: '90 min Zoom',
+      num: '03',
+      title: 'Open the station & watch your agents work',
+      desc: 'Launch the desktop app. Your agents appear as avatars. Tasks sync in real-time. You see everything.',
     },
   ]
 
   return (
-    <section id="how-it-works" className="py-24 px-6">
+    <section id="how-it-works" className="py-20 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
-          <span className="text-purple/50 text-xs tracking-[0.5em]" style={{ fontFamily: 'Orbitron, sans-serif' }}>THE PROCESS</span>
-          <h2 className="glow-purple mt-3 text-3xl font-bold tracking-wide" style={{ fontFamily: 'Orbitron, sans-serif', color: '#7b2fff' }}>
-            3 SESSIONS TO LAUNCH
+          <p className="text-sm font-medium text-blue-600 mb-2 tracking-wide uppercase">3 Steps</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            Zero config. Zero infrastructure.
           </h2>
         </div>
 
-        <div className="space-y-8">
-          {steps.map((step, i) => (
-            <div key={step.session} className="relative flex gap-6 items-start">
-              {/* Timeline line */}
-              <div className="flex flex-col items-center">
-                <div className="w-3 h-3 border-2 border-purple bg-dark rounded-full" style={{ boxShadow: '0 0 10px rgba(123, 47, 255, 0.5)' }} />
-                {i < steps.length - 1 && <div className="w-px flex-1 bg-gradient-to-b from-purple/40 to-transparent min-h-[80px]" />}
-              </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {steps.map((s) => (
+            <div key={s.num} className="relative">
+              <div className="text-5xl font-black text-gray-100 mb-4">{s.num}</div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">{s.title}</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">{s.desc}</p>
+            </div>
+          ))}
+        </div>
 
-              <div className="flex-1 pb-8">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-purple text-xs tracking-[0.3em] font-bold" style={{ fontFamily: 'Orbitron, sans-serif' }}>
-                    {step.session}
-                  </span>
-                  <span className="text-gray-600 text-xs" style={{ fontFamily: 'Rajdhani, sans-serif' }}>{step.duration}</span>
-                </div>
-                <h3 className="text-white text-base font-bold tracking-widest mb-2" style={{ fontFamily: 'Orbitron, sans-serif', fontSize: 13 }}>
-                  {step.title}
-                </h3>
-                <p className="text-gray-400 text-sm leading-relaxed" style={{ fontFamily: 'Rajdhani, sans-serif', fontSize: 15 }}>
-                  {step.desc}
-                </p>
-              </div>
+        {/* MCP Config preview */}
+        <div className="mt-16 max-w-lg mx-auto">
+          <div className="rounded-lg overflow-hidden border border-gray-200 shadow-sm">
+            <div className="bg-gray-50 px-4 py-2 border-b border-gray-200 flex items-center gap-2">
+              <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
+              <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
+              <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
+              <span className="ml-2 text-xs text-gray-400">claude_desktop_config.json</span>
+            </div>
+            <pre className="p-4 text-sm leading-relaxed overflow-x-auto bg-white">
+              <code className="text-gray-600">
+{`{
+  `}<span className="text-blue-600">{`"mcpServers"`}</span>{`: {
+    `}<span className="text-blue-600">{`"stationclaw"`}</span>{`: {
+      `}<span className="text-gray-400">{`"type"`}</span>{`: `}<span className="text-green-600">{`"url"`}</span>{`,
+      `}<span className="text-gray-400">{`"url"`}</span>{`: `}<span className="text-green-600">{`"https://aiquickstart.com/api/mcp"`}</span>{`,
+      `}<span className="text-gray-400">{`"headers"`}</span>{`: {
+        `}<span className="text-gray-400">{`"Authorization"`}</span>{`: `}<span className="text-green-600">{`"Bearer sc_your_token"`}</span>{`
+      }
+    }
+  }
+}`}
+              </code>
+            </pre>
+          </div>
+          <p className="text-center text-xs text-gray-400 mt-3">
+            This is the only thing you paste. We handle the rest.
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ═══════════════════════════════════════════════
+   FEATURES
+   ═══════════════════════════════════════════════ */
+function Features() {
+  const features = [
+    {
+      icon: '👁',
+      title: 'See your agents work',
+      desc: 'No more invisible AI. Your agents have avatars, names, and roles. Watch them move between tasks in a 3D station.',
+    },
+    {
+      icon: '🔌',
+      title: 'Bring your own AI',
+      desc: 'Works with Claude Code, and soon any MCP-compatible tool. You own the AI. We provide the workspace.',
+    },
+    {
+      icon: '👥',
+      title: 'Real-time collaboration',
+      desc: 'Multiple agents, multiple users, one station. See who\'s online, who\'s working on what, all synced instantly.',
+    },
+    {
+      icon: '🎯',
+      title: 'Task board built in',
+      desc: 'Create tasks, assign to agents, track status. Your agents can pull tasks, update progress, and mark them done via MCP.',
+    },
+    {
+      icon: '🔒',
+      title: 'Your data, your station',
+      desc: 'Each station is isolated. Row-level security. Your agents only see your workspace. No shared infrastructure.',
+    },
+    {
+      icon: '🆓',
+      title: 'Free to start',
+      desc: 'Supabase free tier + Vercel free tier = $0/month. You only pay for your own AI usage (your API key, your costs).',
+    },
+  ]
+
+  return (
+    <section className="py-20 px-6 bg-gray-50">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-16">
+          <p className="text-sm font-medium text-blue-600 mb-2 tracking-wide uppercase">Features</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            Everything you need. Nothing you don&apos;t.
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((f, i) => (
+            <div
+              key={i}
+              className="bg-white p-6 rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all"
+            >
+              <div className="text-2xl mb-3">{f.icon}</div>
+              <h3 className="text-base font-semibold text-gray-900 mb-2">{f.title}</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">{f.desc}</p>
             </div>
           ))}
         </div>
@@ -238,67 +559,50 @@ function HowItWorks() {
   )
 }
 
-/* ─── THE STATION ─── */
-function TheStation() {
+/* ═══════════════════════════════════════════════
+   SCREENSHOTS
+   ═══════════════════════════════════════════════ */
+function Screenshots() {
   return (
-    <section className="py-24 px-6">
-      <div className="max-w-5xl mx-auto text-center">
-        <span className="text-pink/50 text-xs tracking-[0.5em]" style={{ fontFamily: 'Orbitron, sans-serif' }}>THE VISUAL EXPERIENCE</span>
-        <h2 className="mt-3 text-3xl font-bold tracking-wide mb-6" style={{ fontFamily: 'Orbitron, sans-serif', color: '#ff2f7b', textShadow: '0 0 20px rgba(255, 47, 123, 0.3)' }}>
-          YOUR COMMAND STATION
-        </h2>
-        <p className="text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-          Every client gets their own <span className="text-white">Junosphere station</span> — a cyberpunk space station
-          desktop app where you see your AI agents collaborate in real time. Think No Man&apos;s Sky meets mission control.
-        </p>
+    <section className="py-20 px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-12">
+          <p className="text-sm font-medium text-blue-600 mb-2 tracking-wide uppercase">The Station</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Not a dashboard. A world.
+          </h2>
+          <p className="text-gray-500 max-w-xl mx-auto">
+            Your agents don&apos;t live in spreadsheet rows. They walk around a 3D space station, gesture at each other,
+            and show you what they&apos;re doing. This is what AI collaboration looks like.
+          </p>
+        </div>
 
-        {/* Station mockup */}
-        <div className="relative mx-auto max-w-3xl glow-box-cyan bg-panel border border-cyan/20 rounded-sm overflow-hidden">
-          {/* Top bar */}
-          <div className="flex items-center justify-between px-4 py-2 border-b border-cyan/10">
-            <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 bg-cyan rounded-full" />
-              <span className="text-cyan text-[10px] tracking-[0.3em]" style={{ fontFamily: 'Orbitron, sans-serif' }}>JUNOSPHERE</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 bg-green rounded-full" />
-              <span className="text-green/60 text-[10px] tracking-widest" style={{ fontFamily: 'Rajdhani, sans-serif' }}>3 AGENTS ONLINE</span>
-            </div>
-          </div>
-
-          {/* Main area */}
-          <div className="grid grid-cols-3 gap-px bg-cyan/5 min-h-[250px]">
-            {/* Galaxy map */}
-            <div className="col-span-2 bg-dark/80 p-6 flex flex-col items-center justify-center relative">
-              <div className="w-16 h-16 border border-cyan/30 rounded-full flex items-center justify-center mb-3" style={{ boxShadow: '0 0 20px rgba(0,240,255,0.1)' }}>
-                <div className="w-4 h-4 bg-cyan/20 rotate-45" />
-              </div>
-              <span className="text-cyan/40 text-[10px] tracking-[0.3em]" style={{ fontFamily: 'Orbitron, sans-serif' }}>GALAXY MAP</span>
-              {/* Orbiting dots */}
-              <div className="absolute top-1/2 left-1/2 w-32 h-32 -translate-x-1/2 -translate-y-1/2 border border-cyan/10 rounded-full" />
-              <div className="absolute top-8 right-12 w-2 h-2 bg-purple rounded-full" style={{ boxShadow: '0 0 8px #7b2fff' }} />
-              <div className="absolute bottom-12 left-16 w-2 h-2 bg-pink rounded-full" style={{ boxShadow: '0 0 8px #ff2f7b' }} />
-            </div>
-
-            {/* Agent list */}
-            <div className="bg-dark/80 p-4">
-              <span className="text-purple/60 text-[9px] tracking-[0.2em] block mb-3" style={{ fontFamily: 'Orbitron, sans-serif' }}>AGENTS</span>
-              {['CTO AGENT', 'MARKETING', 'FIELD OPS'].map((name, i) => {
-                const colors = ['#00f0ff', '#7b2fff', '#ff2f7b']
-                return (
-                  <div key={name} className="flex items-center gap-2 mb-2 p-1.5 bg-white/[0.02] border-l-2" style={{ borderColor: colors[i] }}>
-                    <div className="w-1.5 h-1.5 rounded-full" style={{ background: colors[i], boxShadow: `0 0 4px ${colors[i]}` }} />
-                    <span className="text-[10px] text-gray-400 tracking-wider" style={{ fontFamily: 'Rajdhani, sans-serif' }}>{name}</span>
-                  </div>
-                )
-              })}
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+            <Image
+              src="/screenshot-station.png"
+              alt="StationClaw full workspace — two agents, galaxy map, HUD overlay"
+              width={1440}
+              height={810}
+              className="w-full h-auto"
+            />
+            <div className="bg-white px-4 py-3 border-t border-gray-100">
+              <div className="text-sm font-medium text-gray-900">Main Hub</div>
+              <div className="text-xs text-gray-400">Galaxy map, agent avatars, mission board</div>
             </div>
           </div>
-
-          {/* Bottom bar */}
-          <div className="flex items-center justify-between px-4 py-1.5 border-t border-cyan/10">
-            <span className="text-[9px] text-gray-600 tracking-widest" style={{ fontFamily: 'Orbitron, sans-serif' }}>v0.1.0</span>
-            <span className="text-[9px] text-gray-600 tracking-wider">SUPABASE: <span className="text-green">CONNECTED</span></span>
+          <div className="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+            <Image
+              src="/screenshot-hub.png"
+              alt="StationClaw close-up — agent interaction with holographic project selector"
+              width={1000}
+              height={562}
+              className="w-full h-auto"
+            />
+            <div className="bg-white px-4 py-3 border-t border-gray-100">
+              <div className="text-sm font-medium text-gray-900">Agent Interaction</div>
+              <div className="text-xs text-gray-400">Agents navigate the station and work on projects</div>
+            </div>
           </div>
         </div>
       </div>
@@ -306,150 +610,148 @@ function TheStation() {
   )
 }
 
-/* ─── PRICING ─── */
+/* ═══════════════════════════════════════════════
+   PRICING
+   ═══════════════════════════════════════════════ */
 function Pricing() {
+  const tiers = [
+    {
+      name: 'Starter',
+      price: 'Free',
+      period: '',
+      desc: '1 station, 2 agents, 1 project. Everything you need to try it.',
+      features: ['1 station', '2 agent personas', '1 project', 'MCP integration', 'Real-time sync', 'Desktop app'],
+      cta: 'Get Started',
+      featured: false,
+    },
+    {
+      name: 'Pro',
+      price: '$49',
+      period: '/mo',
+      desc: 'Unlimited agents, projects, and team members.',
+      features: ['Unlimited agents', 'Unlimited projects', '5 team seats', 'Custom system prompts', 'Activity history', 'Priority support'],
+      cta: 'Start Pro Trial',
+      featured: true,
+    },
+    {
+      name: 'Team',
+      price: '$149',
+      period: '/mo',
+      desc: 'For organizations running multiple stations.',
+      features: ['Everything in Pro', '25 team seats', 'Multiple stations', 'SSO integration', 'Custom branding', 'Dedicated support'],
+      cta: 'Contact Us',
+      featured: false,
+    },
+  ]
+
   return (
-    <section id="pricing" className="py-24 px-6">
-      <div className="max-w-4xl mx-auto text-center">
-        <span className="text-green/50 text-xs tracking-[0.5em]" style={{ fontFamily: 'Orbitron, sans-serif' }}>INVESTMENT</span>
-        <h2 className="mt-3 text-3xl font-bold tracking-wide mb-4" style={{ fontFamily: 'Orbitron, sans-serif', color: '#00ff88', textShadow: '0 0 20px rgba(0, 255, 136, 0.3)' }}>
-          ONE SEAT. FULL ACCESS.
-        </h2>
-        <p className="text-gray-400 mb-12" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-          Limited seats per cohort. We keep it small so you get real attention.
-        </p>
+    <section id="pricing" className="py-20 px-6 bg-gray-50">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-16">
+          <p className="text-sm font-medium text-blue-600 mb-2 tracking-wide uppercase">Pricing</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Start free. Scale when you&apos;re ready.
+          </h2>
+          <p className="text-gray-500">You only pay for your own AI. We charge for the workspace.</p>
+        </div>
 
-        <div className="mx-auto max-w-md bg-panel border border-green/20 p-8 relative glow-box-cyan">
-          {/* Corner accents */}
-          <div className="absolute top-0 left-0 w-12 h-px bg-green" />
-          <div className="absolute top-0 left-0 w-px h-12 bg-green" />
-          <div className="absolute bottom-0 right-0 w-12 h-px bg-green" />
-          <div className="absolute bottom-0 right-0 w-px h-12 bg-green" />
-
-          <div className="mb-6">
-            <span className="text-green text-xs tracking-[0.3em]" style={{ fontFamily: 'Orbitron, sans-serif' }}>LAUNCH SEAT</span>
-          </div>
-
-          <div className="mb-6">
-            <span className="text-5xl font-bold text-white" style={{ fontFamily: 'Orbitron, sans-serif' }}>$1,997</span>
-            <span className="text-gray-500 text-sm ml-2" style={{ fontFamily: 'Rajdhani, sans-serif' }}>/seat</span>
-          </div>
-
-          <ul className="text-left space-y-3 mb-8">
-            {[
-              '3 live Zoom sessions (90 min each)',
-              'Full Claude Code training curriculum',
-              'Custom agent fleet setup',
-              'Junosphere command station deployed',
-              'Infrastructure wired: Vercel, Supabase, n8n, Airtable',
-              'Telegram bot agents configured',
-              '30 days post-launch mentorship',
-              'Access to private community',
-            ].map((item) => (
-              <li key={item} className="flex items-start gap-3 text-sm text-gray-300" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-                <span className="text-green mt-0.5">{'>'}</span>
-                {item}
-              </li>
-            ))}
-          </ul>
-
-          <a href="#start" className="block w-full py-3 bg-green/10 border border-green/40 text-green text-sm tracking-[0.2em] text-center hover:bg-green/20 transition-all" style={{ fontFamily: 'Orbitron, sans-serif' }}>
-            CLAIM YOUR SEAT
-          </a>
+        <div className="grid md:grid-cols-3 gap-6">
+          {tiers.map((t) => (
+            <div
+              key={t.name}
+              className={`rounded-lg p-6 ${
+                t.featured
+                  ? 'bg-gray-900 text-white border-2 border-gray-800 shadow-xl'
+                  : 'bg-white border border-gray-200'
+              }`}
+            >
+              <div className={`text-sm font-medium mb-1 ${t.featured ? 'text-blue-400' : 'text-blue-600'}`}>
+                {t.name}
+              </div>
+              <div className="flex items-baseline gap-1 mb-2">
+                <span className={`text-4xl font-bold ${t.featured ? 'text-white' : 'text-gray-900'}`}>
+                  {t.price}
+                </span>
+                {t.period && (
+                  <span className={`text-sm ${t.featured ? 'text-gray-400' : 'text-gray-500'}`}>{t.period}</span>
+                )}
+              </div>
+              <p className={`text-sm mb-6 ${t.featured ? 'text-gray-400' : 'text-gray-500'}`}>
+                {t.desc}
+              </p>
+              <ul className="space-y-2 mb-6">
+                {t.features.map((f) => (
+                  <li key={f} className={`flex items-center gap-2 text-sm ${t.featured ? 'text-gray-300' : 'text-gray-600'}`}>
+                    <svg className={`w-4 h-4 flex-shrink-0 ${t.featured ? 'text-blue-400' : 'text-blue-600'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="/onboard"
+                className={`block w-full py-2.5 text-sm font-medium text-center rounded-md transition-all ${
+                  t.featured
+                    ? 'bg-white text-gray-900 hover:bg-gray-100'
+                    : 'bg-gray-900 text-white hover:bg-gray-800'
+                }`}
+              >
+                {t.cta}
+              </a>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   )
 }
 
-/* ─── CTA / CONTACT FORM ─── */
-function CTA() {
-  const [email, setEmail] = useState('')
-  const [business, setBusiness] = useState('')
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!email) return
-
-    setLoading(true)
-    try {
-      const res = await fetch('/api/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, business }),
-      })
-      if (res.ok) setSubmitted(true)
-    } catch {
-      // fallback — still show success for now
-      setSubmitted(true)
-    }
-    setLoading(false)
-  }
-
+/* ═══════════════════════════════════════════════
+   FINAL CTA
+   ═══════════════════════════════════════════════ */
+function FinalCTA() {
   return (
-    <section id="start" className="py-24 px-6">
-      <div className="max-w-lg mx-auto text-center">
-        <h2 className="glow-cyan text-2xl font-bold tracking-wide mb-3" style={{ fontFamily: 'Orbitron, sans-serif', color: '#00f0ff' }}>
-          READY TO LAUNCH?
+    <section className="py-20 px-6">
+      <div className="max-w-3xl mx-auto text-center">
+        <Image src="/logo.png" alt="StationClaw" width={56} height={56} className="mx-auto mb-6" />
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Your agents are working blind.<br />Give them eyes.
         </h2>
-        <p className="text-gray-400 mb-8" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-          Drop your email. We&apos;ll reach out to schedule your first session.
+        <p className="text-gray-500 mb-8 max-w-lg mx-auto">
+          StationClaw is free to start. Sign up, paste one config snippet,
+          and watch your AI agents come alive in a 3D workspace.
         </p>
-
-        {submitted ? (
-          <div className="p-6 border border-green/30 bg-green/5">
-            <div className="w-3 h-3 bg-green rounded-full mx-auto mb-3" style={{ boxShadow: '0 0 12px #00ff88' }} />
-            <p className="text-green text-sm tracking-widest" style={{ fontFamily: 'Orbitron, sans-serif' }}>TRANSMISSION RECEIVED</p>
-            <p className="text-gray-400 text-sm mt-2" style={{ fontFamily: 'Rajdhani, sans-serif' }}>We&apos;ll be in touch within 24 hours.</p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <input
-              type="email"
-              placeholder="YOUR EMAIL"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full px-4 py-3 bg-panel border border-panel-border text-white text-sm tracking-widest placeholder:text-gray-600 focus:border-cyan/40 focus:outline-none transition-colors"
-              style={{ fontFamily: 'Rajdhani, sans-serif' }}
-            />
-            <input
-              type="text"
-              placeholder="WHAT DO YOU DO? (OPTIONAL)"
-              value={business}
-              onChange={(e) => setBusiness(e.target.value)}
-              className="w-full px-4 py-3 bg-panel border border-panel-border text-white text-sm tracking-widest placeholder:text-gray-600 focus:border-cyan/40 focus:outline-none transition-colors"
-              style={{ fontFamily: 'Rajdhani, sans-serif' }}
-            />
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full py-3 bg-cyan/10 border border-cyan/40 text-cyan text-sm tracking-[0.2em] hover:bg-cyan/20 transition-all disabled:opacity-50"
-              style={{ fontFamily: 'Orbitron, sans-serif' }}
-            >
-              {loading ? 'TRANSMITTING...' : 'GET STARTED'}
-            </button>
-          </form>
-        )}
+        <a
+          href="/onboard"
+          className="inline-block px-8 py-3.5 bg-gray-900 text-white font-semibold rounded-md hover:bg-gray-800 transition-all text-sm tracking-wide"
+        >
+          Get Started Free
+        </a>
       </div>
     </section>
   )
 }
 
-/* ─── FOOTER ─── */
+/* ═══════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════ */
 function Footer() {
   return (
-    <footer className="py-8 px-6 border-t border-panel-border">
-      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <footer className="border-t border-gray-100 py-8 px-6">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <div className="w-1.5 h-1.5 bg-cyan rounded-full" />
-          <span className="text-gray-600 text-xs tracking-[0.2em]" style={{ fontFamily: 'Orbitron, sans-serif' }}>AIQUICKPATH</span>
+          <Image src="/logo.png" alt="StationClaw" width={24} height={24} />
+          <span className="text-sm font-medium text-gray-900">StationClaw</span>
         </div>
-        <span className="text-gray-700 text-xs" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-          Built by Sean & Cam // Powered by Claude Code
-        </span>
+        <div className="flex items-center gap-6 text-xs text-gray-400">
+          <a href="/onboard" className="hover:text-gray-600 transition-colors">Get Started</a>
+          <a href="#pricing" className="hover:text-gray-600 transition-colors">Pricing</a>
+          <a href="#demo" className="hover:text-gray-600 transition-colors">Demo</a>
+        </div>
+        <div className="text-xs text-gray-400">
+          Built by Sean &amp; Cam
+        </div>
       </div>
     </footer>
   )

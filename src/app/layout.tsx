@@ -3,14 +3,14 @@ import Script from 'next/script'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'AIQuickPath — Agentic AI Consultancy',
-  description: 'Learn Claude Code. Build AI agents. Get your own command station. Boutique consultancy by Sean & Cam.',
-  keywords: 'Claude Code, agentic AI, AI consultancy, AI agents, Claude, Anthropic, AI automation',
+  title: 'StationClaw — Give Your AI Agents a Body',
+  description: 'The workspace where your AI agents become visible. Connect Claude Code via MCP, see your agents work in a 3D station, and collaborate across teams. Bring your own AI.',
+  keywords: 'AI agents, MCP, Claude Code, AI workspace, AI collaboration, agent platform, StationClaw, 3D workspace',
   openGraph: {
-    title: 'AIQuickPath — Agentic AI Consultancy',
-    description: 'Learn Claude Code. Build AI agents. Get your own command station.',
-    url: 'https://aiquickpath.com',
-    siteName: 'AIQuickPath',
+    title: 'StationClaw — Give Your AI Agents a Body',
+    description: 'The workspace where your AI agents become visible. Connect Claude Code via MCP.',
+    url: 'https://aiquickstart.com',
+    siteName: 'StationClaw',
     type: 'website',
   },
 }
@@ -22,11 +22,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="scanline">
+      <body style={{ fontFamily: "'Inter', sans-serif" }}>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-EGL28XMK5S"
           strategy="afterInteractive"
