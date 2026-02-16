@@ -108,7 +108,7 @@ export async function POST(req: Request) {
         mcpServers: {
           stationclaw: {
             type: 'url',
-            url: 'https://aiquickstart.com/api/mcp',
+            url: 'https://www.aiquickpath.com/api/mcp',
             headers: {
               Authorization: `Bearer ${rawToken}`,
             },

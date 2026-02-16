@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'StationClaw — Give Your AI Agents a Body',
     description: 'The workspace where your AI agents become visible. Connect Claude Code via MCP.',
-    url: 'https://aiquickstart.com',
+    url: 'https://www.aiquickpath.com',
     siteName: 'StationClaw',
     type: 'website',
   },

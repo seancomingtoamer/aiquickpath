@@ -389,7 +389,7 @@ function HowItWorks() {
   "mcpServers": {
     "stationclaw": {
       "type": "url",
-      "url": "https://aiquickpath.com/api/mcp",
+      "url": "https://www.aiquickpath.com/api/mcp",
       "headers": {
         "Authorization": "Bearer sc_your_token"
       }
