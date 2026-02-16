@@ -79,8 +79,8 @@ export async function POST(req: Request) {
         content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
       })
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Internal error'
-      return jsonRpcError(body.id, -32603, message)
+      console.error('MCP tool error:', err instanceof Error ? err.message : err)
+      return jsonRpcError(body.id, -32603, 'Internal server error')
     }
   }
 

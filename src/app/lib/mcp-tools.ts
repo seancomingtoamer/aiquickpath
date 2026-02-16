@@ -85,6 +85,28 @@ export const TOOL_DEFINITIONS = [
   },
 ]
 
+// Verify a project belongs to the caller's station
+async function verifyProjectOwnership(projectId: string, stationId: string): Promise<boolean> {
+  const { data } = await supabaseAdmin
+    .from('projects')
+    .select('id')
+    .eq('id', projectId)
+    .eq('station_id', stationId)
+    .single()
+  return !!data
+}
+
+// Verify a task belongs to the caller's station (via its project)
+async function verifyTaskOwnership(taskId: string, stationId: string): Promise<boolean> {
+  const { data: task } = await supabaseAdmin
+    .from('tasks')
+    .select('project_id')
+    .eq('id', taskId)
+    .single()
+  if (!task) return false
+  return verifyProjectOwnership(task.project_id, stationId)
+}
+
 export async function handleToolCall(
   toolName: string,
   args: Record<string, unknown>,
@@ -138,6 +160,10 @@ export async function handleToolCall(
     }
 
     case 'stationclaw_create_task': {
+      if (!await verifyProjectOwnership(args.project_id as string, ctx.stationId)) {
+        return { error: 'Project not found in your station' }
+      }
+
       const { data: task, error } = await supabaseAdmin
         .from('tasks')
         .insert({
@@ -156,6 +182,10 @@ export async function handleToolCall(
     }
 
     case 'stationclaw_update_task': {
+      if (!await verifyTaskOwnership(args.task_id as string, ctx.stationId)) {
+        return { error: 'Task not found in your station' }
+      }
+
       const updates: Record<string, unknown> = {}
       if (args.status) updates.status = args.status
       if (args.description !== undefined) updates.description = args.description
@@ -173,6 +203,10 @@ export async function handleToolCall(
     }
 
     case 'stationclaw_complete_task': {
+      if (!await verifyTaskOwnership(args.task_id as string, ctx.stationId)) {
+        return { error: 'Task not found in your station' }
+      }
+
       const { data: task, error } = await supabaseAdmin
         .from('tasks')
         .update({
