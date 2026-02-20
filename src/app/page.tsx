@@ -54,16 +54,17 @@ function Navigation() {
             >
               How it works
             </Link>
-            <Link
-              href="#pricing"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+            <a
+              href="#contact"
+              onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
             >
-              Pricing
-            </Link>
+              Contact
+            </a>
           </div>
 
           <Button asChild>
-            <Link href="/onboard">Get Started</Link>
+            <a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>Get Started</a>
           </Button>
         </div>
       </div>
@@ -85,42 +86,42 @@ function Hero() {
             <span className="text-muted-foreground">Now in Beta</span>
           </div>
 
-          {/* Logo */}
+          {/* Mascot */}
           <div className="mb-8">
             <Image
-              src="/logo.png"
-              alt="StationClaw Logo"
-              width={80}
-              height={80}
-              className="h-20 w-20"
+              src="/jean-clawd.png"
+              alt="Jean Clawd Van Damn — StationClaw Mascot"
+              width={350}
+              height={350}
+              className="h-72 w-72 sm:h-80 sm:w-80 rounded-full"
+              priority
             />
           </div>
 
           {/* Headline */}
           <h1 className="mb-6 text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
             {'Give your AI agents '}
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent">
               a body.
             </span>
           </h1>
 
           {/* Subtext */}
           <p className="mb-10 max-w-3xl text-balance text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            Your Claude Code runs in a terminal. Invisible. Alone. StationClaw
-            gives it a 3D workspace, a persona, and a team. You bring the AI —
-            we bring the station.
+            Your AI agents run in terminals. Invisible. Alone. StationClaw
+            gives them a 3D workspace, a body, and a team. We set it up.
+            You watch them work.
           </p>
 
           {/* CTAs */}
           <div className="mb-16 flex flex-col items-center gap-4 sm:flex-row">
             <Button size="lg" asChild className="min-w-[200px]">
-              <Link href="/onboard">Get Started Free</Link>
+              <a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>Get a Custom Setup</a>
             </Button>
             <Button
               size="lg"
-              variant="outline"
               asChild
-              className="min-w-[200px]"
+              className="min-w-[200px] border border-red-500/50 bg-transparent text-red-400 hover:bg-red-500/10"
             >
               <Link href="#demo">{'Watch the demo \u2193'}</Link>
             </Button>
@@ -129,19 +130,20 @@ function Hero() {
           {/* Screenshot Card */}
           <Card className="relative w-full max-w-5xl overflow-hidden border-border bg-card p-2 shadow-2xl">
             <div className="relative aspect-[16/9] overflow-hidden rounded-lg bg-muted">
-              <Image
-                src="/screenshot-station.png"
-                alt="StationClaw Workspace"
-                width={1440}
-                height={810}
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="h-full w-full object-cover"
-                priority
-              />
+              >
+                <source src="/hero-demo.mp4" type="video/mp4" />
+              </video>
               {/* Floating Labels */}
               <div className="absolute left-4 top-4 rounded-md border border-green-500/50 bg-green-950/80 px-3 py-1.5 text-sm font-medium text-green-400 backdrop-blur-sm">
-                2 Agents Online
+                3 Agents Online
               </div>
-              <div className="absolute bottom-4 right-4 rounded-md border border-cyan-500/50 bg-cyan-950/80 px-3 py-1.5 text-sm font-medium text-cyan-400 backdrop-blur-sm">
+              <div className="absolute bottom-4 right-4 rounded-md border border-red-500/50 bg-red-950/80 px-3 py-1.5 text-sm font-medium text-red-400 backdrop-blur-sm">
                 Connected via MCP
               </div>
             </div>
@@ -165,11 +167,20 @@ function LiveDemo() {
             time. No dashboards. No spreadsheets. Just your team, working.
           </p>
 
-          <AnimatedStation />
+          <Card className="relative w-full max-w-5xl overflow-hidden border-border bg-black shadow-2xl">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full"
+            >
+              <source src="/demo.mp4" type="video/mp4" />
+            </video>
+          </Card>
 
           <p className="mt-8 text-sm text-muted-foreground">
-            Simulated station view — actual product uses full 3D with animated
-            agent avatars
+            Live screen recording — this is the actual product running
           </p>
         </div>
       </div>
@@ -179,8 +190,8 @@ function LiveDemo() {
 
 function AnimatedStation() {
   const [agents, setAgents] = useState([
-    { x: 30, y: 40, vx: 0.3, vy: 0.2, color: 'cyan' as const, label: 'CTO AGENT' },
-    { x: 70, y: 60, vx: -0.2, vy: 0.3, color: 'purple' as const, label: 'DESIGN LEAD' },
+    { x: 30, y: 40, vx: 0.3, vy: 0.2, color: 'cyan' as const, label: 'ROOK — VP INFRA' },
+    { x: 70, y: 60, vx: -0.2, vy: 0.3, color: 'purple' as const, label: 'ARIA — MARKETING' },
   ]);
 
   useEffect(() => {
@@ -227,7 +238,7 @@ function AnimatedStation() {
                 <path
                   d="M 40 0 L 0 0 0 40"
                   fill="none"
-                  stroke="cyan"
+                  stroke="red"
                   strokeWidth="0.5"
                 />
               </pattern>
@@ -237,14 +248,14 @@ function AnimatedStation() {
         </div>
 
         {/* Scan Line */}
-        <div className="animate-scan-line absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-50"></div>
+        <div className="animate-scan-line absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-50"></div>
 
         {/* Center Hologram */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <div className="relative h-32 w-32">
-            <div className="absolute inset-0 animate-spin-slow rounded-full border-2 border-cyan-500/30"></div>
-            <div className="absolute inset-2 animate-spin-slower rounded-full border-2 border-purple-500/30"></div>
-            <div className="absolute inset-4 animate-pulse rounded-full bg-cyan-500/10"></div>
+            <div className="absolute inset-0 animate-spin-slow rounded-full border-2 border-red-500/30"></div>
+            <div className="absolute inset-2 animate-spin-slower rounded-full border-2 border-red-400/30"></div>
+            <div className="absolute inset-4 animate-pulse rounded-full bg-red-500/10"></div>
           </div>
         </div>
 
@@ -262,15 +273,15 @@ function AnimatedStation() {
             <div className="relative">
               <div
                 className={`h-4 w-4 animate-pulse rounded-full ${
-                  agent.color === 'cyan' ? 'bg-cyan-500' : 'bg-purple-500'
+                  agent.color === 'cyan' ? 'bg-red-500' : 'bg-purple-500'
                 } shadow-lg ${
-                  agent.color === 'cyan' ? 'shadow-cyan-500/50' : 'shadow-purple-500/50'
+                  agent.color === 'cyan' ? 'shadow-red-500/50' : 'shadow-purple-500/50'
                 }`}
               ></div>
               <div
                 className={`absolute left-1/2 top-6 -translate-x-1/2 whitespace-nowrap rounded px-2 py-0.5 text-xs font-medium ${
                   agent.color === 'cyan'
-                    ? 'bg-cyan-950/80 text-cyan-400'
+                    ? 'bg-red-950/80 text-red-400'
                     : 'bg-purple-950/80 text-purple-400'
                 }`}
               >
@@ -281,20 +292,20 @@ function AnimatedStation() {
         ))}
 
         {/* HUD Bar */}
-        <div className="absolute left-0 right-0 top-0 border-b border-cyan-500/30 bg-black/80 px-4 py-2 backdrop-blur-sm">
+        <div className="absolute left-0 right-0 top-0 border-b border-red-500/30 bg-black/80 px-4 py-2 backdrop-blur-sm">
           <div className="flex items-center justify-between text-xs">
-            <span className="font-mono text-cyan-400">STATIONCLAW</span>
+            <span className="font-mono text-red-400">STATIONCLAW</span>
             <span className="font-mono text-green-400">2 AGENTS ONLINE</span>
           </div>
         </div>
 
         {/* Task Board Overlay */}
         <div className="absolute bottom-4 right-4 w-48 rounded-lg border border-border/50 bg-black/80 p-3 backdrop-blur-sm">
-          <div className="mb-2 text-xs font-semibold text-cyan-400">
+          <div className="mb-2 text-xs font-semibold text-red-400">
             ACTIVE TASKS
           </div>
           <div className="space-y-1.5">
-            {['Deploy landing page', 'Build MCP gateway', 'Design onboarding', 'Write API docs', 'Set up billing'].map(
+            {['Configure agent personas', 'Deploy body signals', 'Build mission room', 'Connect MCP gateway', 'Run pulse check'].map(
               (task, i) => (
                 <div
                   key={i}
@@ -313,9 +324,9 @@ function AnimatedStation() {
             ACTIVITY FEED
           </div>
           <div className="space-y-1.5 text-xs text-muted-foreground">
-            <div><span className="text-cyan-400">CTO Agent</span> completed: Deploy landing page</div>
-            <div><span className="text-purple-400">Design Lead</span> started: Design onboarding</div>
-            <div><span className="text-cyan-400">CTO Agent</span> working on: Build MCP gateway</div>
+            <div><span className="text-red-400">Rook</span> body_signal: scanning hologram table</div>
+            <div><span className="text-purple-400">Aria</span> completed: Draft campaign brief</div>
+            <div><span className="text-red-400">Rook</span> pulse_check: all systems nominal</div>
           </div>
         </div>
       </div>
@@ -332,7 +343,7 @@ function HowItWorks() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-            Zero config. Zero infrastructure.
+            We set it up. You run it.
           </h2>
         </div>
 
@@ -340,25 +351,25 @@ function HowItWorks() {
           {[
             {
               number: '01',
-              title: 'Sign up & name your station',
+              title: 'Tell us about your operation',
               description:
-                'Create an account, name your workspace, and define your first agent persona in 60 seconds.',
+                'Book a call. Walk us through your team, your AI stack, and what you need your agents doing. We take it from there.',
             },
             {
               number: '02',
-              title: 'Paste the MCP config into Claude Code',
+              title: 'We build your station',
               description:
-                'We give you a single JSON snippet. Paste it into your Claude Code config. That\'s the entire integration.',
+                'We configure your workspace, set up agent personas, connect your Claude Code via MCP, and test everything end-to-end.',
             },
             {
               number: '03',
-              title: 'Open the station & watch your agents work',
+              title: 'Launch & watch them work',
               description:
-                'Launch the desktop app. Your agents appear as avatars. Tasks sync in real-time. You see everything.',
+                'Open the desktop app. Your agents walk around a 3D station, send body signals, and you see everything in real time.',
             },
           ].map((step) => (
             <Card key={step.number} className="border-border bg-card p-6">
-              <div className="mb-4 text-5xl font-bold text-cyan-500/20">
+              <div className="mb-4 text-5xl font-bold text-red-500/20">
                 {step.number}
               </div>
               <h3 className="mb-3 text-xl font-semibold text-foreground">
@@ -389,7 +400,7 @@ function HowItWorks() {
   "mcpServers": {
     "stationclaw": {
       "type": "url",
-      "url": "https://www.aiquickpath.com/api/mcp",
+      "url": "https://stationclaw.com/api/mcp",
       "headers": {
         "Authorization": "Bearer sc_your_token"
       }
@@ -410,34 +421,34 @@ function HowItWorks() {
 function Features() {
   const features = [
     {
-      title: 'See your agents work',
+      title: 'Agents with bodies',
       description:
-        'No more invisible AI. Your agents have avatars, names, and roles. Watch them move between tasks in a 3D station.',
+        'Your AI agents walk to desks, interact with control panels, and wave when they come online. Real avatars, real presence — not a chat window.',
     },
     {
       title: 'Bring your own AI',
       description:
-        'Works with Claude Code, and soon any MCP-compatible tool. You own the AI. We provide the workspace.',
+        'Works with Claude Code today, and any MCP-compatible tool tomorrow. You own the AI and the API keys. We provide the workspace.',
     },
     {
-      title: 'Real-time collaboration',
+      title: 'Real-time body signals',
       description:
-        'Multiple agents, multiple users, one station. See who\'s online, who\'s working on what, all synced instantly.',
+        'Agents send body signals — working, scanning, alert, thinking — that drive avatar animations. See what your agents are doing at a glance.',
     },
     {
-      title: 'Task board built in',
+      title: 'Sci-fi mission room',
       description:
-        'Create tasks, assign to agents, track status. Your agents can pull tasks, update progress, and mark them done via MCP.',
+        'Holographic briefing table, glowing control panels, status indicators, neon floor markers. Your workspace looks like a space station because it is one.',
     },
     {
       title: 'Your data, your station',
       description:
-        'Each station is isolated. Row-level security. Your agents only see your workspace. No shared infrastructure.',
+        'Each station is isolated with row-level security. Your agents only see your workspace. We set it up, you own it.',
     },
     {
-      title: 'Free to start',
+      title: 'We install it for you',
       description:
-        'Supabase free tier + Vercel free tier = $0/month. You only pay for your own AI usage (your API key, your costs).',
+        'No DIY setup. Our team configures your station, connects your agents, and makes sure everything works before we hand you the keys.',
     },
   ];
 
@@ -494,10 +505,10 @@ function Screenshots() {
             </div>
             <div className="p-6">
               <h3 className="text-lg font-semibold text-foreground">
-                Main Hub
+                Station Hub
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Galaxy map, agent avatars, mission board — your entire operation at a glance.
+                Holographic briefing table, agent avatars, active missions — your entire operation at a glance.
               </p>
             </div>
           </Card>
@@ -514,10 +525,10 @@ function Screenshots() {
             </div>
             <div className="p-6">
               <h3 className="text-lg font-semibold text-foreground">
-                Agent Interaction
+                Mission Room
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Agents navigate the station and work on projects in real-time.
+                Agents work at sci-fi terminals, kanban boards track tasks, and a live task board shows real progress.
               </p>
             </div>
           </Card>
@@ -528,120 +539,120 @@ function Screenshots() {
 }
 
 function Pricing() {
-  const tiers = [
-    {
-      name: 'Starter',
-      price: 'Free',
-      period: '',
-      description: '1 station, 2 agents, 1 project. Everything you need to try it.',
-      features: [
-        '1 station',
-        '2 agent personas',
-        '1 project',
-        'MCP integration',
-        'Real-time sync',
-        'Desktop app',
-      ],
-      cta: 'Get Started',
-      href: '/onboard',
-      featured: false,
-    },
-    {
-      name: 'Pro',
-      price: '$49',
-      period: '/mo',
-      description: 'Unlimited agents, projects, and team members.',
-      features: [
-        'Unlimited agents',
-        'Unlimited projects',
-        '5 team seats',
-        'Custom system prompts',
-        'Activity history',
-        'Priority support',
-      ],
-      cta: 'Start Pro Trial',
-      href: '/onboard',
-      featured: true,
-    },
-    {
-      name: 'Team',
-      price: '$149',
-      period: '/mo',
-      description: 'For organizations running multiple stations.',
-      features: [
-        'Everything in Pro',
-        '25 team seats',
-        'Multiple stations',
-        'SSO integration',
-        'Custom branding',
-        'Dedicated support',
-      ],
-      cta: 'Contact Us',
-      href: '/onboard',
-      featured: false,
-    },
-  ];
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setStatus('sending');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, message }),
+      });
+      if (res.ok) {
+        setStatus('sent');
+        setEmail('');
+        setMessage('');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  };
 
   return (
-    <section id="pricing" className="border-b border-border/40 bg-background py-20 sm:py-32">
+    <section id="contact" className="border-b border-border/40 bg-background py-20 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-            Start free. Scale when you&apos;re ready.
+            Every station is custom.
           </h2>
-          <p className="text-lg text-muted-foreground">You only pay for your own AI. We charge for the workspace.</p>
+          <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
+            {"We don't do one-size-fits-all. Tell us about your team and your AI stack, and we'll build a station that fits."}
+          </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-3">
-          {tiers.map((tier) => (
-            <Card
-              key={tier.name}
-              className={`relative flex flex-col border-border bg-card p-8 ${
-                tier.featured ? 'ring-2 ring-cyan-500' : ''
-              }`}
-            >
-              {tier.featured && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-cyan-500 px-4 py-1 text-sm font-semibold text-black">
-                  Most Popular
-                </div>
-              )}
-              <div className="mb-6">
-                <h3 className="mb-2 text-2xl font-bold text-foreground">
-                  {tier.name}
-                </h3>
-                <div className="mb-2 flex items-baseline gap-1">
-                  <span className="text-4xl font-bold text-foreground">
-                    {tier.price}
-                  </span>
-                  {tier.period && (
-                    <span className="text-muted-foreground">{tier.period}</span>
-                  )}
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  {tier.description}
-                </p>
+        <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-2">
+          {/* What You Get */}
+          <Card className="border-border bg-card p-8">
+            <h3 className="mb-6 text-2xl font-bold text-foreground">
+              {"What's included"}
+            </h3>
+            <ul className="space-y-4">
+              {[
+                'Full station setup by our team',
+                'Custom agent personas & roles',
+                'MCP integration with your Claude Code',
+                'Body signal & animation system',
+                '3D mission room with your branding',
+                'Desktop app configured & ready',
+                'Hands-on support after launch',
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-red-500" />
+                  <span className="text-muted-foreground">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </Card>
+
+          {/* Contact Form */}
+          <Card className="border-border bg-card p-8">
+            <h3 className="mb-2 text-2xl font-bold text-foreground">
+              Get a custom setup
+            </h3>
+            <p className="mb-6 text-sm text-muted-foreground">
+              {"Drop your email and tell us what you're building. We'll reach out within 24 hours."}
+            </p>
+
+            {status === 'sent' ? (
+              <div className="rounded-lg border border-green-500/50 bg-green-950/30 p-6 text-center">
+                <p className="text-lg font-semibold text-green-400">{"We got it."}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{"We'll be in touch within 24 hours."}</p>
               </div>
-
-              <ul className="mb-8 flex-1 space-y-3">
-                {tier.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-cyan-500" />
-                    <span className="text-sm text-muted-foreground">
-                      {feature}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <Button
-                asChild
-                variant={tier.featured ? 'default' : 'outline'}
-                className="w-full"
-              >
-                <Link href={tier.href}>{tier.cta}</Link>
-              </Button>
-            </Card>
-          ))}
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-foreground">
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="you@company.com"
+                    className="w-full rounded-md border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-foreground">
+                    {"What are you building?"}
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={4}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Tell us about your team, your AI setup, and what you need..."
+                    className="w-full rounded-md border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                  />
+                </div>
+                <Button type="submit" className="w-full" disabled={status === 'sending'}>
+                  {status === 'sending' ? 'Sending...' : 'Send It'}
+                </Button>
+                {status === 'error' && (
+                  <p className="text-center text-sm text-red-400">Something went wrong. Try again or email sean@frontdesklife.com directly.</p>
+                )}
+              </form>
+            )}
+          </Card>
         </div>
       </div>
     </section>
@@ -652,18 +663,18 @@ function FinalCTA() {
   return (
     <section className="border-b border-border/40 bg-gradient-to-b from-muted/20 to-background py-20 sm:py-32">
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-        <Image src="/logo.png" alt="StationClaw" width={56} height={56} className="mx-auto mb-6" />
+        <Image src="/logo.png" alt="StationClaw" width={120} height={120} className="mx-auto mb-6 h-28 w-28" />
         <h2 className="mb-6 text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
           Your agents are working blind.
           <br />
           Give them eyes.
         </h2>
         <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground">
-          StationClaw is free to start. Sign up, paste one config snippet,
-          and watch your AI agents come alive in a 3D workspace.
+          We build your station, connect your agents, and hand you the keys.
+          You bring the AI — we bring the world it lives in.
         </p>
         <Button size="lg" asChild className="mt-4 min-w-[240px]">
-          <Link href="/onboard">Get Started Free</Link>
+          <a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>Get a Custom Setup</a>
         </Button>
       </div>
     </section>
@@ -698,13 +709,24 @@ function Footer() {
             >
               How it works
             </Link>
-            <Link href="#pricing" className="transition-colors hover:text-foreground">
-              Pricing
-            </Link>
+            <a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }} className="transition-colors hover:text-foreground cursor-pointer">
+              Contact
+            </a>
           </div>
 
-          <div className="text-sm text-muted-foreground">
-            Built by Sean &amp; Cam
+          <div className="flex items-center gap-4 text-sm text-muted-foreground">
+            <a
+              href="https://x.com/stationclaw"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-foreground"
+              aria-label="Follow StationClaw on X"
+            >
+              <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+            <span>Built by Sean &amp; Cam</span>
           </div>
         </div>
       </div>
