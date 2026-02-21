@@ -15,7 +15,7 @@ export default function Home() {
       <LiveDemo />
       <HowItWorks />
       <Features />
-      <Screenshots />
+
       <Pricing />
       <FinalCTA />
       <Footer />
@@ -478,65 +478,6 @@ function Features() {
   );
 }
 
-function Screenshots() {
-  return (
-    <section className="border-b border-border/40 bg-muted/20 py-20 sm:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-            Not a dashboard. A world.
-          </h2>
-          <p className="mx-auto max-w-3xl text-balance text-lg leading-relaxed text-muted-foreground">
-            Your agents don&apos;t live in spreadsheet rows. They walk around a 3D space station,
-            gesture at each other, and show you what they&apos;re doing. This is what AI collaboration looks like.
-          </p>
-        </div>
-
-        <div className="grid gap-8 md:grid-cols-2">
-          <Card className="overflow-hidden border-border bg-card">
-            <div className="relative aspect-[4/3]">
-              <Image
-                src="/screenshot-station.png"
-                alt="Full workspace view"
-                width={800}
-                height={600}
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="p-6">
-              <h3 className="text-lg font-semibold text-foreground">
-                Station Hub
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Holographic briefing table, agent avatars, active missions — your entire operation at a glance.
-              </p>
-            </div>
-          </Card>
-
-          <Card className="overflow-hidden border-border bg-card">
-            <div className="relative aspect-[4/3]">
-              <Image
-                src="/screenshot-hub.png"
-                alt="Close-up control hub"
-                width={800}
-                height={600}
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="p-6">
-              <h3 className="text-lg font-semibold text-foreground">
-                Mission Room
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Agents work at sci-fi terminals, kanban boards track tasks, and a live task board shows real progress.
-              </p>
-            </div>
-          </Card>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function Pricing() {
   const [email, setEmail] = useState('');
